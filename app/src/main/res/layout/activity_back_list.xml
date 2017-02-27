@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="backViewModel"
+            type="com.myworld.onemall.back.BackListViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_order_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.myworld.onemall.back.BackListActivity">
+
+        <RelativeLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@color/white"
+            android:elevation="1dp">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{backViewModel.onBackClick}"/>
+
+            <TextView
+                android:id="@+id/cu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="退换返修"
+                android:textColor="#ff232326"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <com.liaoinstan.springview.widget.SpringView
+            android:id="@+id/spring_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/title_bar">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:itemView="@{backViewModel.itemView}"
+                app:items="@{backViewModel.viewModels}"
+                app:layoutManager="@{LayoutManagers.linear()}" />
+        </com.liaoinstan.springview.widget.SpringView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="@{backViewModel.emptyContent?View.VISIBLE:View.GONE}"  >
+
+            <ImageView
+                android:id="@+id/empty_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_order_list_empty"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/empty_image"
+                android:layout_marginTop="24dp"
+                android:text="您还没有相关订单"
+                android:layout_centerInParent="true"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/d4x"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{backViewModel.loadding?View.VISIBLE:View.GONE}" />
+
+    </RelativeLayout>
+</layout>

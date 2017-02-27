@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="detailViewModel"
+            type="com.myworld.onemall.detail.DetailViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@color/white"
+            android:elevation="1dp">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{detailViewModel.onBackClick}"/>
+
+            <TextView
+                android:id="@+id/cu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="商品详情"
+                android:textColor="#ff232326"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <com.ashokvarma.bottomnavigation.BottomNavigationBar
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom_bar"
+            android:layout_below="@id/title_bar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.youth.banner.Banner
+                    android:layout_width="match_parent"
+                    android:layout_height="360dp"
+                    app:indicator_height="8dp"
+                    app:indicator_width="8dp"
+                    app:is_auto_play="true"
+                    app:urls="@{detailViewModel.images}"
+                    app:clickListener="@{detailViewModel.listener}"/>
+
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/detail_desc_price_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/detail_desc_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="3dp"
+                        android:text="@{detailViewModel.name}"
+                        android:textColor="#ff232326"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp">
+
+                        <TextView
+                            android:id="@+id/detail_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@{detailViewModel.price}"
+                            android:textColor="#fff23030"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <!--<TextView-->
+                        <!--android:id="@+id/detail_price_notice"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="25dp"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:paddingLeft="5dp"-->
+                        <!--android:paddingRight="5dp"-->
+                        <!--android:text="降价通知"-->
+                        <!--android:textColor="#ff686868"-->
+                        <!--android:textSize="12sp" />-->
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    app:clickCommand="@{detailViewModel.selectClick}">
+
+                    <TextView
+                        android:id="@+id/selectd_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="已选" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="18dp"
+                        android:layout_toRightOf="@id/selectd_hint"
+                        android:text="@{detailViewModel.size}"
+                        android:textColor="#ff232326" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_more" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    app:clickCommand="@{detailViewModel.addressClick}">
+
+                    <TextView
+                        android:id="@+id/send_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="送至" />
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_toRightOf="@id/send_hint"
+                        android:text="@{detailViewModel.address}"
+                        android:textColor="#ff232326" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_more" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/location"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@id/send_hint"
+                        android:text="@{detailViewModel.haveGoods?@string/goods_enough:@string/goods_empty}"
+                        android:textColor="@color/colorPrimary" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/d4x"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{detailViewModel.loadding?View.VISIBLE:View.GONE}" />
+
+    </RelativeLayout>
+</layout>
+

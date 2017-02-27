@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="goodsViewModel"
+            type="com.myworld.onemall.main.GoodsItemViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.graphics.Paint" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        app:clickCommand="@{goodsViewModel.itemClick}">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/o5"
+            android:layout_width="179dp"
+            android:layout_height="179dp"
+            android:layout_centerHorizontal="true"
+            app:uri="@{goodsViewModel.image}" />
+
+        <LinearLayout
+            android:id="@+id/dxj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/o5"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/o9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{goodsViewModel.name}"
+                android:textColor="#ff252525"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/dxm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/dxj"
+            android:layout_marginLeft="6dp">
+
+            <LinearLayout
+                android:id="@+id/bpn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/o_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{goodsViewModel.price}"
+                    android:textColor="#fff15353"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bpt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/colorPrimary"
+                    android:paddingBottom="0dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:paddingTop="0dp"
+                    android:text="极"
+                    android:textColor="#ffffffff"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/o8"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@id/o5"
+            android:layout_alignLeft="@id/o5"
+            android:layout_alignRight="@id/o5"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:gravity="center"
+            android:text="@{goodsViewModel.numNotify}"
+            android:textColor="#ffffffff"
+            android:textSize="13sp"
+            android:visibility="@{TextUtils.isEmpty(goodsViewModel.numNotify)?View.GONE:View.VISIBLE}" />
+
+        <ImageView
+            android:id="@+id/cn8"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignBottom="@id/o5"
+            android:layout_alignRight="@id/o5" />
+
+        <RelativeLayout
+            android:id="@+id/of"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dxm"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="4dp">
+
+            <!--<TextView-->
+            <!--android:id="@+id/dy5"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="4dp"-->
+            <!--android:paddingBottom="0dp"-->
+            <!--android:paddingLeft="2dp"-->
+            <!--android:paddingRight="2dp"-->
+            <!--android:paddingTop="1dp"-->
+            <!--android:text="自营"-->
+            <!--android:textColor="#fff23030"-->
+            <!--android:textSize="9sp" />-->
+            <!--android:layout_toRightOf="@id/dy5"-->
+            <TextView
+                android:id="@+id/oh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="0dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:paddingTop="1dp"
+                android:paintFlags="@{goodsViewModel.strike?Paint.STRIKE_THRU_TEXT_FLAG:0}"
+                android:text="@{@string/goods_ori_price_prefix+goodsViewModel.oriPrice}"
+                android:textColor="#ff81838e"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/og"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/oh"
+                android:text="@{@string/goods_buy_num_prefix+goodsViewModel.buyNumber}"
+                android:textColor="#ff81838e"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

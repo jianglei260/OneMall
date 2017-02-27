@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="itemViewModel"
+            type="com.myworld.onemall.address.AddressItemViewModel" />
+        <import type="com.myworld.onemall.utils.StringUtil"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/deg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        app:clickCommand="@{itemViewModel.itemClick}">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/deh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="10.0"
+                android:text="@{itemViewModel.name}"
+                android:textColor="#ff232326"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/dei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8.0"
+                android:text="@{StringUtil.playMosaic(itemViewModel.phone,3,4)}"
+                android:textColor="#ff232326"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/dej"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{itemViewModel.address}"
+                android:textColor="#ff808080"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/lighter_gray" />
+
+        <RelativeLayout
+            android:id="@+id/dkh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+            <CheckBox
+                android:id="@+id/dki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:button="@drawable/selector_item_check"
+                android:checked="@={itemViewModel.isDefault}"
+                android:clickable="@{itemViewModel.isDefault?false:true}"
+                android:paddingLeft="10dp"
+                android:text="@{itemViewModel.isDefault?@string/address_default:@string/address_set_default}" />
+
+            <TextView
+                android:id="@+id/dkj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/ic_delete"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="#ff848689"
+                android:textSize="13sp"
+                app:clickCommand="@{itemViewModel.deleteClick}" />
+
+
+            <TextView
+                android:id="@+id/dkk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"
+                android:layout_toLeftOf="@id/dkj"
+                android:drawableLeft="@drawable/ic_edit"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:text="编辑"
+                android:textColor="#ff848689"
+                android:textSize="13sp"
+                app:clickCommand="@{itemViewModel.editClick}" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_gray" />
+    </LinearLayout>
+
+</layout>

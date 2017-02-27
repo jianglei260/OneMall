@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="itemViewModel"
+            type="com.myworld.onemall.detail.ImageItemViewModel"/>
+        <import type="android.view.View"/>
+    </data>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/c"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{itemViewModel.loadfailed?View.VISIBLE:View.GONE}">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="6dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingTop="6dp"
+                android:text="点击重新加载"
+                android:textColor="#ff000000"
+                android:textSize="14sp"
+                app:clickCommand="@{itemViewModel.reload}"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/a"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <me.relex.photodraweeview.PhotoDraweeView
+                android:id="@+id/b"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:uri="@{itemViewModel.imageUrl}"
+                app:onSuccessCommand="@{itemViewModel.onSuccessCommand}"
+                app:onFailureCommand="@{itemViewModel.onFailureCommand}"
+                android:scaleType="fitCenter"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/d"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:visibility="@{itemViewModel.loadding?View.VISIBLE:View.GONE}"
+                android:layout_width="34dp"
+                android:layout_height="34dp" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

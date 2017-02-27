@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="editViewModel"
+            type="com.myworld.onemall.user.UserInfoEditViewModel" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_user_info_edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.myworld.onemall.user.UserInfoEditActivity">
+
+        <RelativeLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@color/white"
+            android:elevation="1dp">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{editViewModel.onBackClick}"/>
+
+            <TextView
+                android:id="@+id/cu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="账号管理"
+                android:textColor="#ff232326"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/dvb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_bar"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/dvc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/dvd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="头像"
+                    android:textColor="#ff252525"
+                    android:textSize="15sp" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/dv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/ic_detail" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/dtk"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toLeftOf="@id/dv5"
+                    app:imageUri="@{editViewModel.userImage}"
+                    app:placeholderImage="@drawable/ic_user_head_default"
+                    app:roundAsCircle="true"
+                    app:roundingBorderColor="@color/colorPrimary"
+                    app:roundingBorderWidth="1dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp">
+
+                    <TextView
+                        android:id="@+id/dvl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="用户名"
+                        android:textColor="#ff252525"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/dvm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp" />
+
+                    <TextView
+                        android:id="@+id/dvn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="2dp"
+                        android:layout_toLeftOf="@id/dvm"
+                        android:text="@{editViewModel.userName}"
+                        android:textColor="#ffbcbdbf"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/lighter_gray" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dvf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp">
+
+                    <TextView
+                        android:id="@+id/dv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="昵称"
+                        android:textColor="#ff252525"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/dvs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp" />
+
+                    <TextView
+                        android:id="@+id/dvo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="2dp"
+                        android:layout_toLeftOf="@id/dvs"
+                        android:text="@{editViewModel.userNick}"
+                        android:textColor="#ffbcbdbf"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/lighter_gray" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
+

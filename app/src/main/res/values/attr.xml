@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="refresh" format="reference" />
+    <attr name="imageUri" format="reference" />
+    <attr name="loadding" format="reference" />
+    <attr name="loadfailed" format="reference" />
+    <declare-styleable name="SpringView">
+        <attr name="refresh" />
+    </declare-styleable>
+    <declare-styleable name="SimpleDraweeView">
+        <attr name="imageUri" />
+        <attr name="loadding" />
+        <attr name="loadfailed" />
+    </declare-styleable>
+</resources>

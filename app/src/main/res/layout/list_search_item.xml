@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="itemViewModel"
+            type="com.myworld.onemall.search.SearchTextItemViewModel" />
+
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        app:clickCommand="@{itemViewModel.itemClcik}">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="11dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/btw"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@{itemViewModel.text}"
+                android:textColor="#ff232326"
+                android:textSize="14sp"
+                android:gravity="center"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_gray"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</layout>
+

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="addressViewModel"
+            type="com.myworld.onemall.address.AddressViewModel"/>
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View"/>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_address_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.myworld.onemall.address.AddressListActivity">
+
+        <RelativeLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@color/white"
+            android:elevation="1dp">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{addressViewModel.onBackClick}"/>
+
+            <TextView
+                android:id="@+id/cu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="收获地址管理"
+                android:textColor="#ff232326"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/selector_button_clickable"
+                android:text="+新建地址"
+                android:textColor="@color/white"
+                app:clickCommand="@{addressViewModel.newAddressClcik}"/>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/add"
+            android:layout_below="@id/title_bar"
+            app:itemView="@{addressViewModel.itemView}"
+            app:items="@{addressViewModel.viewModels}"
+            app:layoutManager="@{LayoutManagers.linear()}"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/title_bar"
+            android:layout_above="@id/add"
+            android:visibility="@{addressViewModel.emptyContent?View.VISIBLE:View.GONE}"  >
+
+            <ImageView
+                android:id="@+id/empty_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_adress"
+                android:tint="#A2A2A2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/empty_image"
+                android:layout_marginTop="24dp"
+                android:text="您还没有收货地址，快增加一个吧"
+                android:layout_centerInParent="true"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/d4x"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{addressViewModel.loadding?View.VISIBLE:View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

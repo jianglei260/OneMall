@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="cartViewModel"
+            type="com.myworld.onemall.main.CartViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/cui"
+            android:layout_width="match_parent"
+            android:layout_height="49dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                android:visibility="@{cartViewModel.backVisible?View.VISIBLE:View.GONE}"
+                app:clickCommand="@{cartViewModel.onBackClick}"/>
+
+            <TextView
+                android:id="@+id/egz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="购物车"
+                android:textColor="#ff232326"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:id="@+id/eh0"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:orientation="horizontal"
+                android:visibility="@{cartViewModel.isFull?View.VISIBLE:View.GONE}">
+
+                <TextView
+                    android:id="@+id/eh1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="@{cartViewModel.editMode?@string/cart_edit_finish:@string/cart_edit}"
+                    android:textColor="#ff81848e"
+                    android:textSize="15sp"
+                    app:clickCommand="@{cartViewModel.editClick}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="bottom"
+                android:background="@color/lighter_gray" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bqs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="@{cartViewModel.isFull?View.VISIBLE:View.GONE}">
+
+            <View
+                android:id="@+id/ei9"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray" />
+
+            <LinearLayout
+                android:id="@+id/br5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/eia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2.3">
+
+                        <CheckBox
+                            android:id="@+id/eib"
+                            android:layout_width="19dp"
+                            android:layout_height="19dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="12dp"
+                            android:background="@drawable/selector_item_check"
+                            android:button="@null"
+                            android:checked="@={cartViewModel.allCheck}"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:paddingTop="5dp" />
+
+                        <TextView
+                            android:id="@+id/eic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="6dp"
+                            android:layout_toRightOf="@id/eib"
+                            android:text="全选"
+                            android:textColor="#ff585859"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.0"
+                        android:paddingRight="2dp">
+
+                        <TextView
+                            android:id="@+id/br6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginRight="1dp"
+                            android:text="@{@string/total_prefix+cartViewModel.totalPrice}"
+                            android:textColor="#ff232326"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/br7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/br6"
+                            android:layout_alignRight="@id/br6"
+                            android:layout_below="@id/br6"
+                            android:text="@{@string/total_price_prefix+cartViewModel.totalPrice}"
+                            android:textColor="#ff585859"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:background="@color/colorPrimary">
+
+                    <TextView
+                        android:id="@+id/br8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@{@string/pay_prefix+cartViewModel.totalNum+@string/pay_tail}"
+                        android:textColor="#ffffffff"
+                        android:textSize="19sp"
+                        app:clickCommand="@{cartViewModel.addOrderClick}" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/edit_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="@{cartViewModel.editMode?View.VISIBLE:View.GONE}">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2.3">
+
+                    <CheckBox
+                        android:id="@+id/check_box"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/selector_item_check"
+                        android:button="@null"
+                        android:checked="@={cartViewModel.allCheck}"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:id="@+id/select_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="6dp"
+                        android:layout_toRightOf="@id/check_box"
+                        android:text="全选"
+                        android:textColor="#ff585859"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:paddingRight="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/shape_delete_text_bg"
+                        android:padding="8dp"
+                        android:text="删除"
+                        android:textColor="@color/colorPrimary"
+                        app:clickCommand="@{cartViewModel.deleteClick}" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/a19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cui"
+            android:visibility="@{cartViewModel.isLogin?View.GONE:View.VISIBLE}">
+
+            <TextView
+                android:id="@+id/a07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/shape_select_image_bg"
+                android:paddingBottom="4dp"
+                android:paddingLeft="23dp"
+                android:paddingRight="23dp"
+                android:paddingTop="4dp"
+                android:text="登 录"
+                android:textColor="#ff686868"
+                android:textSize="14sp"
+                app:clickCommand="@{cartViewModel.loginClick}" />
+
+            <TextView
+                android:id="@+id/a08"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="22dp"
+                android:layout_toRightOf="@id/a07"
+                android:text="登录后同步购物车中的商品"
+                android:textColor="#ff686868"
+                android:textSize="14sp" />
+
+            <View
+                android:id="@+id/a09"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/a07"
+                android:layout_marginTop="6dp"
+                android:background="@color/lighter_gray" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bqs"
+            android:layout_below="@id/a19" />
+
+
+        <ProgressBar
+            android:id="@+id/d4x"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{cartViewModel.loadding?View.VISIBLE:View.GONE}" />
+    </RelativeLayout>
+</layout>

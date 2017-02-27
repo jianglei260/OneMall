@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="searchViewModel"
+            type="com.myworld.onemall.search.SearchViewModel" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.myworld.onemall.search.SearchActivity">
+
+        <RelativeLayout
+            android:id="@+id/nb"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{searchViewModel.onBackClick}"/>
+
+            <TextView
+                android:id="@+id/ena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="搜索"
+                android:textColor="#ff232326"
+                android:textSize="14sp"
+                app:clickCommand="@{searchViewModel.searchClick}" />
+
+            <RelativeLayout
+                android:id="@+id/wn"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/ena"
+                android:layout_toRightOf="@id/cv"
+                android:background="@drawable/shape_search_bg_gray">
+
+                <ImageView
+                    android:id="@+id/wo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_search_png" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/wp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/wo"
+                    android:background="@null"
+                    android:paddingRight="32dp"
+                    android:text="@={searchViewModel.searchText}"
+                    android:imeOptions="actionSearch"
+                    android:imeActionLabel="搜索"
+                    android:maxLines="1"
+                    android:inputType="text"/>
+
+                <ImageView
+                    android:id="@+id/bvt"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:paddingTop="6dp"
+                    android:src="@drawable/ic_edit_clear"
+                    android:visibility="@{TextUtils.isEmpty(searchViewModel.searchText)?View.GONE:View.VISIBLE}"
+                    app:clickCommand="@{searchViewModel.clearClick}" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/en9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/nb"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="历史搜索"
+                android:textColor="#ff444a4d"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@color/white"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/en_"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:itemView="@{searchViewModel.itemView}"
+                app:items="@{searchViewModel.viewModels}"
+                app:layoutManager="@{LayoutManagers.linear()}"
+                android:background="@color/white"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
+

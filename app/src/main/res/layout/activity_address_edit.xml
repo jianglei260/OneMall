@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="editViewModel"
+            type="com.myworld.onemall.address.AddressEditViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/r2"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@color/white"
+            android:elevation="1dp">
+
+            <ImageView
+                android:id="@+id/cs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{editViewModel.onBackClick}"/>
+
+            <TextView
+                android:id="@+id/cu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="编辑收货地址"
+                android:textColor="#ff232326"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/den"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/r2">
+
+            <RelativeLayout
+                android:id="@+id/deo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:id="@+id/dep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/deq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="11dp"
+                        android:layout_marginTop="11dp"
+                        android:layout_weight="1.0">
+
+                        <TextView
+                            android:id="@+id/der"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="11dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="收货人："
+                            android:textColor="#ff232326"
+                            android:textSize="15sp" />
+
+                        <EditText
+                            android:id="@+id/des"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="11dp"
+                            android:layout_toRightOf="@id/der"
+                            android:background="@null"
+                            android:paddingLeft="1dp"
+                            android:paddingRight="1dp"
+                            android:text="@={editViewModel.name}"
+                            android:textColor="#ff232326"
+                            android:textSize="15sp" />
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/det"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/der"
+                            android:background="@color/lighter_gray" />
+
+                        <TextView
+                            android:id="@+id/deu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/det"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="11dp"
+                            android:text="手机号码："
+                            android:textColor="#ff232326"
+                            android:textSize="15sp" />
+
+                        <EditText
+                            android:id="@+id/dev"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/det"
+                            android:layout_marginTop="11dp"
+                            android:layout_toRightOf="@id/deu"
+                            android:background="@null"
+                            android:inputType="phone"
+                            android:paddingLeft="1dp"
+                            android:paddingRight="1dp"
+                            android:text="@={editViewModel.phone}"
+                            android:textColor="#ff232326"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/dey"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/dep"
+                    android:background="@color/lighter_gray" />
+
+                <LinearLayout
+                    android:id="@+id/dez"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dey"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/nr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:paddingBottom="11dp">
+
+                        <RelativeLayout
+                            android:id="@+id/ns"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="11dp"
+                            android:layout_marginTop="11dp">
+
+                            <TextView
+                                android:id="@+id/nt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="所在地区："
+                                android:textColor="#ff232326"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/nv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/nt"
+                                android:text="@{editViewModel.area}"
+                                android:textColor="#ff232326"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/nw"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignLeft="@id/ns"
+                            android:layout_below="@id/ns"
+                            android:background="@color/lighter_gray" />
+
+                        <TextView
+                            android:id="@+id/nx"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nw"
+                            android:layout_marginBottom="11dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="11dp"
+                            android:text="详细地址："
+                            android:textColor="#ff232326"
+                            android:textSize="15sp" />
+
+                        <EditText
+                            android:id="@+id/ny"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nw"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="11dp"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="11dp"
+                            android:layout_toRightOf="@id/nx"
+                            android:background="@null"
+                            android:text="@={editViewModel.address}"
+                            android:textColor="#ff232326"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/df0"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/dez"
+                    android:background="@color/lighter_gray" />
+            </RelativeLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/df5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+            <Button
+                android:gravity="center"
+                android:id="@+id/df6"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@{!editViewModel.saveble?@drawable/selector_button_unclickable:@drawable/selector_button_clickable}"
+                android:text="保存"
+                android:textColor="@{!editViewModel.saveble?@color/button_unclickable_text_color:@color/white}"
+                android:textSize="18sp"
+                app:clickCommand="@{editViewModel.saveClick}"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

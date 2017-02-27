@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="cartViewModel"
+            type="com.myworld.onemall.main.CartEmptyViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <com.liaoinstan.springview.widget.SpringView
+        android:id="@+id/spring_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refresh="@{cartViewModel.refresh}">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.0"
+            app:itemView="@{cartViewModel.itemView}"
+            app:items="@{cartViewModel.viewModels}" />
+    </com.liaoinstan.springview.widget.SpringView>
+
+</layout>

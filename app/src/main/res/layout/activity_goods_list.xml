@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="listViewModel"
+            type="com.myworld.onemall.search.GoodsListViewModel"/>
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+        <import type="android.view.View"/>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_goods_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.myworld.onemall.search.GoodsListActivity">
+        <RelativeLayout
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{listViewModel.onBackClick}"/>
+
+            <CheckBox
+                android:id="@+id/ena"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:button="@null"
+                android:checked="@={listViewModel.linearMode}"
+                android:background="@drawable/selector_goods_list_icon"/>
+
+            <RelativeLayout
+                android:id="@+id/wn"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/ena"
+                android:layout_toRightOf="@id/cv"
+                android:background="@drawable/shape_search_bg_gray"
+                app:clickCommand="@{listViewModel.searchClick}">
+
+                <ImageView
+                    android:id="@+id/wo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_search_png" />
+
+                <TextView
+                    android:id="@+id/wp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/wo"
+                    android:paddingRight="32dp"
+                    android:background="@null"
+                    android:text="@{listViewModel.searchText}"/>
+
+                <ImageView
+                    android:id="@+id/bvt"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:paddingTop="6dp"
+                    android:src="@drawable/ic_edit_clear" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@id/search_bar"
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:itemView="@{listViewModel.itemView}"
+            app:items="@{listViewModel.viewModels}"
+            app:layoutManager="@{LayoutManagers.linear()}"/>
+        <RelativeLayout
+            android:layout_below="@id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="@{listViewModel.emptyContent?View.VISIBLE:View.GONE}"  >
+
+            <ImageView
+                android:id="@+id/empty_image"
+                android:layout_width="120dp"
+                android:layout_height="78dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_empty_content"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/empty_image"
+                android:layout_marginTop="24dp"
+                android:text="抱歉，没有找到商品额～"
+                android:layout_centerInParent="true"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/d4x"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{listViewModel.loadding?View.VISIBLE:View.GONE}" />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="meViewModel"
+            type="com.myworld.onemall.main.MeViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@{meViewModel.login?@drawable/ic_head_login:@drawable/ic_head_bg}"
+            app:clickCommand="@{meViewModel.userHeadClick}">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/user_image"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_head_bg"
+                android:padding="4dp"
+                app:imageUri="@{meViewModel.login?meViewModel.loginHead:meViewModel.defaultHead}"
+                app:roundAsCircle="true"
+                app:roundingBorderColor="@color/white"
+                app:roundingBorderWidth="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/user_image"
+                android:text="@{meViewModel.login?meViewModel.userName:@string/activity_login_login}"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_setting"
+                app:clickCommand="@{meViewModel.settingClick}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:drawablePadding="4dp"
+                android:drawableRight="@drawable/ic_detail_white"
+                android:text="账户管理"
+                android:textColor="@color/white"
+                android:visibility="@{meViewModel.login?View.VISIBLE:View.GONE}" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lighter_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/bought_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_below="@id/header_layout"
+                    android:background="@android:color/white"
+                    app:clickCommand="@{meViewModel.receiveClick}">
+
+                    <TextView
+                        style="@style/user_center_item_title"
+                        android:drawableLeft="@drawable/ic_recive"
+                        android:text="待收货" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="40dp"
+                        android:background="@drawable/shape_red_notify"
+                        android:gravity="center"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:text="@{meViewModel.recevingNum}"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:visibility="@{TextUtils.isEmpty(meViewModel.recevingNum)?View.GONE:View.VISIBLE}" />
+
+                    <ImageView style="@style/user_center_item_right" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lighter_gray" />
+                <RelativeLayout
+                    android:id="@+id/pay_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@android:color/white"
+                    app:clickCommand="@{meViewModel.payClick}">
+
+                    <TextView
+                        style="@style/user_center_item_title"
+                        android:drawableLeft="@drawable/ic_pay"
+                        android:text="待支付" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="40dp"
+                        android:background="@drawable/shape_red_notify"
+                        android:gravity="center"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:text="@{meViewModel.payingNum}"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:visibility="@{TextUtils.isEmpty(meViewModel.payingNum)?View.GONE:View.VISIBLE}" />
+
+
+                    <ImageView style="@style/user_center_item_right" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lighter_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/order_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@android:color/white"
+                    app:clickCommand="@{meViewModel.orderClick}">
+
+                    <TextView
+                        style="@style/user_center_item_title"
+                        android:drawableLeft="@drawable/ic_order"
+                        android:text="我的订单" />
+
+                    <TextView style="@style/user_center_item_text" />
+
+                    <ImageView style="@style/user_center_item_right" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lighter_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/receive_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@android:color/white"
+                    app:clickCommand="@{meViewModel.returnClick}">
+
+                    <TextView
+                        style="@style/user_center_item_title"
+                        android:drawableLeft="@drawable/ic_return"
+                        android:text="返修/退换" />
+
+                    <TextView style="@style/user_center_item_text" />
+
+                    <ImageView style="@style/user_center_item_right" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lighter_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/feedBack_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@android:color/white"
+                    app:clickCommand="@{meViewModel.feedBackClick}">
+
+                    <TextView
+                        style="@style/user_center_item_title"
+                        android:drawableLeft="@drawable/ic_feedback"
+                        android:text="意见反馈" />
+
+                    <TextView style="@style/user_center_item_text" />
+
+                    <ImageView style="@style/user_center_item_right" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lighter_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/share_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@android:color/white"
+                    app:clickCommand="@{meViewModel.shareClick}">
+
+                    <TextView
+                        style="@style/user_center_item_title"
+                        android:drawableLeft="@drawable/ic_share"
+                        android:text="分享给朋友" />
+
+                    <TextView style="@style/user_center_item_text" />
+
+                    <ImageView style="@style/user_center_item_right" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lighter_gray" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

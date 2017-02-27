@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bwk"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <LinearLayout
+        android:id="@+id/e0l"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:paddingBottom="0dp"
+        android:paddingTop="0dp">
+
+        <RelativeLayout
+            android:id="@+id/e0m"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@+id/e0n"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="综合"
+                android:textColor="#fff23030"
+                android:textSize="16sp" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/e0o"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/e0n" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/e0p"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@+id/e0q"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="销量"
+                android:textColor="#ff232326"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/e0r"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/e0s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:text="价格"
+                android:textColor="#ff232326"
+                android:textSize="16sp" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/e0t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/e0s" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/e0x"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/e0y"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp" />
+
+            <TextView
+                android:id="@+id/e0z"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="2dp"
+                android:layout_toLeftOf="@id/e0y"
+                android:text="筛选"
+                android:textColor="#ff232326"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bwv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lighter_gray"/>
+</RelativeLayout>

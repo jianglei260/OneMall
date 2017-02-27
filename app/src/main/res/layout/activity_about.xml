@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="aboutViewModel"
+            type="com.myworld.onemall.about.AboutViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_about"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.myworld.onemall.about.AboutActivity">
+
+        <RelativeLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@color/white"
+            android:elevation="1dp">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ic_back"
+                app:clickCommand="@{aboutViewModel.onBackClick}" />
+
+            <TextView
+                android:id="@+id/cu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="关于"
+                android:textColor="#ff232326"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/title_bar">
+
+            <RelativeLayout
+                android:id="@+id/hz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/i0"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_onemall" />
+
+                <TextView
+                    android:id="@+id/i1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/i0"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="@{@string/about_version_name_prefix+aboutViewModel.versionName+@string/about_version_code_prefix+aboutViewModel.versionCode}"
+                    android:textColor="#ff848689"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/i2"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_below="@id/i1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/ic_qrcode" />
+
+                <TextView
+                    android:id="@+id/i3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/i2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:text="扫描二维码,您的朋友也可下载OneMall客户端"
+                    android:textColor="#ff686868"
+                    android:textSize="13sp" />
+
+                <RelativeLayout
+                    android:id="@+id/i4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/i3"
+                    android:layout_marginTop="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp"
+                        android:background="@color/white"
+                        app:clickCommand="@{aboutViewModel.updateClick}">
+
+                        <TextView
+                            android:id="@+id/dso"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:text="检测更新"
+                            android:textColor="#ff252525"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/dsp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_detail" />
+
+                        <View
+                            android:id="@+id/dsr"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentTop="true"
+                            android:background="@color/lighter_gray" />
+
+                        <View
+                            android:id="@+id/j9"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/lighter_gray" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/i5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/i4"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp">
+
+                        <TextView
+                            android:id="@+id/dsx"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:text="使用帮助"
+                            android:textColor="#ff252525"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentBottom="true" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/i6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/i5"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Copyright©2015-2016 \nOneMall 版权所有"
+                    android:textColor="#ff848689"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/d4x"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{aboutViewModel.loadding?View.VISIBLE:View.GONE}" />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.myworld.onemall.main.MainViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/deep_white_smoke">
+
+        <RelativeLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="#11000000"
+            android:elevation="1dp">
+
+            <ImageView
+                android:id="@+id/cv"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:src="@drawable/ic_onemall"
+                android:paddingBottom="8dp"
+                android:tint="@{mainViewModel.white?@color/white:@color/colorPrimary}" />
+
+            <LinearLayout
+                android:id="@+id/sort"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:clickCommand="@{mainViewModel.sortClick}">
+
+                <ImageView
+                    android:paddingTop="2dp"
+                    android:id="@+id/sort_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:paddingLeft="12dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_sort"
+                    android:tint="@{mainViewModel.white?@color/white:@color/black}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center"
+                    android:text="@{mainViewModel.sortName}"
+                    android:textColor="@{mainViewModel.white?@color/white:@color/black}"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/sort"
+                android:layout_toRightOf="@id/cv"
+                android:background="@{mainViewModel.white?@drawable/shape_search_bg_transiant:@drawable/shape_search_bg_gray}"
+                app:clickCommand="@{mainViewModel.searchClick}"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_search_png"
+                    android:tint="@{mainViewModel.white?@color/white:@color/deepGray}"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/search_icon"
+                    android:text="搜索想要的商品"
+                    android:textColor="@{mainViewModel.white?@color/white:@color/deepGray}" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <com.liaoinstan.springview.widget.SpringView
+            android:id="@+id/spring_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:refresh="@{mainViewModel.refresh}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:itemView="@{mainViewModel.itemView}"
+                app:items="@{mainViewModel.viewModels}" />
+        </com.liaoinstan.springview.widget.SpringView>
+
+        <ProgressBar
+            android:id="@+id/d4x"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{mainViewModel.loadding?View.VISIBLE:View.GONE}" />
+
+    </RelativeLayout>
+</layout>

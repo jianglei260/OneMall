@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="cartFullViewModel"
+            type="com.myworld.onemall.main.CartFullViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/egy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/eh5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.liaoinstan.springview.widget.SpringView
+                android:id="@+id/spring_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:refresh="@{cartFullViewModel.refresh}">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:itemView="@{cartFullViewModel.itemView}"
+                    app:items="@{cartFullViewModel.viewModels}"
+                    app:layoutManager="@{LayoutManagers.linear()}" />
+            </com.liaoinstan.springview.widget.SpringView>
+
+            <ImageView
+                android:id="@+id/eh_"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="62dp"
+                android:layout_marginRight="12dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>
